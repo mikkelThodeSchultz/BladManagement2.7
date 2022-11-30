@@ -4,6 +4,7 @@ import com.example.cykelrytter.model.Artist;
 import com.example.cykelrytter.repositories.ArtistRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -17,7 +18,8 @@ public class ArtistService implements IArtistService{
 
     @Override
     public Set<Artist> findAll() {
-        return null;
+        Set<Artist> set =new HashSet<>(artistRepository.findAll());
+        return set;
     }
 
     @Override
