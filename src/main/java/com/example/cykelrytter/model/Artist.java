@@ -2,22 +2,33 @@ package com.example.cykelrytter.model;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Artist() {
+    private String name;
+    private String description;
+    private String agent;
+    private String imageLink;
+    private String youtubeLink;
+    private String facebookLink;
+    private String instagramLink;
+    private String spotifyLink;
+    private String tikTokLink;
 
-    }
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
+    //private Set<SoMeLink> soMeLinks =new HashSet<>();
 }
