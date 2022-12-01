@@ -24,21 +24,21 @@ public class ArtistService implements IArtistService{
 
     @Override
     public Artist save(Artist object) {
-        return null;
+        return artistRepository.save(object);
     }
 
     @Override
     public void delete(Artist object) {
-
+        artistRepository.delete(object);
     }
 
     @Override
     public void deleteById(Long aLong) {
-
+        artistRepository.deleteById(aLong);
     }
 
     @Override
     public Optional<Artist> findById(Long aLong) {
-        return Optional.empty();
+        return artistRepository.findById(aLong);
     }
 }
