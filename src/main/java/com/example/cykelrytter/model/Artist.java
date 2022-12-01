@@ -23,7 +23,12 @@ public class Artist {
     private String description;
     private String agent;
     private String imageLink;
+    private String youtubeLink;
+    private String facebookLink;
+    private String instagramLink;
+    private String spotifyLink;
+    private String tikTokLink;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
-    private Set<SoMeLink> soMeLinks =new HashSet<>();
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "artist")
+    //private Set<SoMeLink> soMeLinks =new HashSet<>();
 }

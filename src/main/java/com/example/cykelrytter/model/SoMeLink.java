@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class SoMeLink {
+public class SoMeLink { //Might be redundant
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
