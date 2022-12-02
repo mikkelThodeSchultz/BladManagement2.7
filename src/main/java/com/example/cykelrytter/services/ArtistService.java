@@ -5,6 +5,7 @@ import com.example.cykelrytter.repositories.ArtistRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -40,5 +41,11 @@ public class ArtistService implements IArtistService{
     @Override
     public Optional<Artist> findById(Long aLong) {
         return artistRepository.findById(aLong);
+    }
+
+
+    @Override
+    public List<Artist> findArtistByName(String artistName) {
+        return artistRepository.findArtistByName(artistName);
     }
 }

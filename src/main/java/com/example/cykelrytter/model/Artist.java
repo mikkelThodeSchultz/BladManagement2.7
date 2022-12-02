@@ -20,6 +20,7 @@ public class Artist {
     private Long id;
 
     private String name;
+    @Column(length =2500)
     private String description;
     private String agent;
     private String imageLink;
