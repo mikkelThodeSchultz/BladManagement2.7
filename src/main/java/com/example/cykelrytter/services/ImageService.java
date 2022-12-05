@@ -3,6 +3,7 @@ import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.repositories.ImageRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -16,12 +17,14 @@ public class ImageService implements IImageService{
 
     @Override
     public Set<Image> findAll() {
-        return null;
+        Set<Image> images = new HashSet<>();
+        imageRepository.findAll().forEach(images::add);
+        return images;
     }
 
     @Override
     public Image save(Image object) {
-        return null;
+        return imageRepository.save(object);
     }
 
     @Override
