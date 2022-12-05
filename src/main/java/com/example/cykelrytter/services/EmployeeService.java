@@ -4,6 +4,7 @@ import com.example.cykelrytter.model.Employee;
 import com.example.cykelrytter.repositories.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -17,12 +18,14 @@ public class EmployeeService implements IEmployeeService{
 
     @Override
     public Set<Employee> findAll() {
-        return null;
+        Set<Employee> employees = new HashSet<>();
+        employeeRepository.findAll().forEach(employees::add);
+        return employees;
     }
 
     @Override
     public Employee save(Employee object) {
-        return null;
+        return employeeRepository.save(object);
     }
 
     @Override
