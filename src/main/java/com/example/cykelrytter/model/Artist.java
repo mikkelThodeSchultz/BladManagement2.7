@@ -20,8 +20,10 @@ public class Artist {
     private Long id;
 
     private String name;
-    @Column(length =2500)
+
+    @Column (columnDefinition="TEXT")
     private String description;
+
     private String agent;
     private String imageLink;
     private String youtubeLink;
