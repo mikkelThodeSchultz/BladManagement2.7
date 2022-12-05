@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -34,5 +35,12 @@ public class ArtistController {
             return new ResponseEntity<>(artistToGet.get(), HttpStatus.OK);
         }
         else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/get/artistByName")
+    public ResponseEntity <List<Artist>> getArtistByName(String artistName){
+        if (artistService.findArtistByName(artistName).size()==1) {
+            return new ResponseEntity<>(artistService.findArtistByName(artistName), HttpStatus.OK);
+        } else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 }
