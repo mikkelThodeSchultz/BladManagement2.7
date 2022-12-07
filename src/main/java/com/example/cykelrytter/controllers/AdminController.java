@@ -1,5 +1,6 @@
 package com.example.cykelrytter.controllers;
 
+import com.example.cykelrytter.model.Admin;
 import com.example.cykelrytter.model.NewsList;
 import com.example.cykelrytter.services.IAdminService;
 import com.example.cykelrytter.services.IArtistService;
@@ -38,4 +39,9 @@ public class AdminController {
         return new ResponseEntity<>("Du er nu frameldt vores nyhedsbrev", HttpStatus.OK);
     }
 
+    @GetMapping("/login")
+    public ResponseEntity<Admin> login (){
+        Admin admin = adminService.findById((long)1).orElse(null);
+        return new ResponseEntity<>(admin, HttpStatus.OK);
+    }
 }
