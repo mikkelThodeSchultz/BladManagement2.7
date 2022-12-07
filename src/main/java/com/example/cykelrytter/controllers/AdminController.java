@@ -37,4 +37,5 @@ public class AdminController {
         newsListService.deleteById(emailId);
         return new ResponseEntity<>("Du er nu frameldt vores nyhedsbrev", HttpStatus.OK);
     }
+
 }
