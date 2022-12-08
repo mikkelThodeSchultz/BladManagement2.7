@@ -2,22 +2,31 @@ package com.example.cykelrytter.model;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Event() {
+    @Column
+    private String facebookLink;
 
-    }
+    @Column
+    private String imageUrl;
+
+    @Column
+    private LocalDate date;
+
+    @Column (columnDefinition="TEXT")
+    private String description;
+
 }

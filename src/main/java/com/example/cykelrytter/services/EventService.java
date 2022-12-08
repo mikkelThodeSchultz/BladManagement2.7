@@ -4,6 +4,7 @@ import com.example.cykelrytter.model.Event;
 import com.example.cykelrytter.repositories.EventRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -17,12 +18,14 @@ public class EventService implements IEventService{
 
     @Override
     public Set<Event> findAll() {
-        return null;
+        Set<Event> events = new HashSet<>();
+        eventRepository.findAll().forEach(events::add);
+        return events;
     }
 
     @Override
-    public Event save(Event object) {
-        return null;
+    public Event save(Event event) {
+        return eventRepository.save(event);
     }
 
     @Override
@@ -37,6 +40,6 @@ public class EventService implements IEventService{
 
     @Override
     public Optional<Event> findById(Long aLong) {
-        return Optional.empty();
+        return eventRepository.findById(aLong);
     }
 }
