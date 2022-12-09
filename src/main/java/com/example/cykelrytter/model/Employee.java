@@ -26,9 +26,6 @@ public class Employee {
     @Column
     private String imgURL;
 
-    @Column
-    private String test;
-
     public Employee() {
 
     }
