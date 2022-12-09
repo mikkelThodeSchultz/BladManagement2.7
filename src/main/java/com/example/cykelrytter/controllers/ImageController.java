@@ -27,4 +27,9 @@ public class ImageController {
     public ResponseEntity<Image> create (@RequestBody Image imageUrl){
         return new ResponseEntity<>(imageService.save(imageUrl), HttpStatus.OK);
     }
+
+    @PostMapping("/create/urlParsed")
+    public ResponseEntity<Image> saveUrl (@RequestParam String url){
+        return new ResponseEntity<>(imageService.convertUrl(url), HttpStatus.OK);
+    }
 }
