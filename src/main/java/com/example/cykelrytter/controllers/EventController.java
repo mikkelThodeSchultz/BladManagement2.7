@@ -28,7 +28,7 @@ public class EventController {
         return new ResponseEntity<>(eventService.save(event), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/event/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Long eventId){
         if (eventService.findById(eventId).isPresent()){
             eventService.deleteById(eventId);
