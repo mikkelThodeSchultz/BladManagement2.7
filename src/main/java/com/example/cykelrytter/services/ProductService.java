@@ -1,5 +1,6 @@
 package com.example.cykelrytter.services;
 
+import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.model.Product;
 import com.example.cykelrytter.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,6 @@ public class ProductService implements IProductService{
 
     @Override
     public void deleteById(Long aLong) {
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.cykelrytter.services;
 
+import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.model.Order;
 import com.example.cykelrytter.repositories.OrderRepository;
 import org.springframework.stereotype.Service;

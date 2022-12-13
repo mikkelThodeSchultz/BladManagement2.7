@@ -27,4 +27,14 @@ public class EventController {
     public ResponseEntity<Event> create(@RequestBody Event event){
         return new ResponseEntity<>(eventService.save(event), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable("id") Long eventId){
+        if (eventService.findById(eventId).isPresent()){
+            eventService.deleteById(eventId);
+            return new ResponseEntity<>("Event deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Failed to delete event", HttpStatus.OK);
+        }
+    }
 }

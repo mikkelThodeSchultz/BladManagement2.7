@@ -1,4 +1,6 @@
 package com.example.cykelrytter.services;
+import com.example.cykelrytter.model.Image;
+
 import java.util.Optional;
 import java.util.Set;
 

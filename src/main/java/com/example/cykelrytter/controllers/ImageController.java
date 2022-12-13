@@ -24,12 +24,14 @@ public class ImageController {
     }
 
     @PostMapping("/create/backstageImage")
-    public ResponseEntity<Image> create (@RequestBody Image imageUrl){
-        return new ResponseEntity<>(imageService.save(imageUrl), HttpStatus.OK);
+    public ResponseEntity<Image> create (@RequestBody String imageUrl){
+        Image imageToSave = imageService.convertUrl(imageUrl);
+        return new ResponseEntity<>(imageService.save(imageToSave), HttpStatus.OK);
     }
 
-    @PostMapping("/create/urlParsed")
-    public ResponseEntity<Image> saveUrl (@RequestParam String url){
-        return new ResponseEntity<>(imageService.convertUrl(url), HttpStatus.OK);
+    @DeleteMapping ("/delete/backstageImage")
+    public ResponseEntity<String> delete (@RequestParam Long imageId){
+        imageService.deleteById(imageId);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
 }

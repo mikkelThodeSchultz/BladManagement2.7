@@ -1,6 +1,7 @@
 package com.example.cykelrytter.services;
 
 import com.example.cykelrytter.model.Employee;
+import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.repositories.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,6 @@ public class EmployeeService implements IEmployeeService{
 
     @Override
     public void deleteById(Long aLong) {
-
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.cykelrytter.services;
 
 import com.example.cykelrytter.model.Artist;
+import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.repositories.ArtistRepository;
 import org.springframework.stereotype.Service;
 

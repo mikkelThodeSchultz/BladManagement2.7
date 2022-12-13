@@ -44,7 +44,7 @@ public class ImageService implements IImageService{
         Image image = new Image();
         image.setImageURL(converted);
 
-        return imageRepository.save(image);
+        return image;
     }
 
 
@@ -55,7 +55,7 @@ public class ImageService implements IImageService{
 
     @Override
     public void deleteById(Long aLong) {
-
+        imageRepository.deleteById(aLong);
     }
 
     @Override

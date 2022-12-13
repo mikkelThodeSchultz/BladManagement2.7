@@ -1,6 +1,7 @@
 package com.example.cykelrytter.services;
 
 import com.example.cykelrytter.model.Event;
+import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.repositories.EventRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class EventService implements IEventService{
 
     @Override
     public void deleteById(Long aLong) {
-
+        eventRepository.deleteById(aLong);
     }
 
     @Override

@@ -5,10 +5,7 @@ import com.example.cykelrytter.services.ArtistService;
 import com.example.cykelrytter.services.IArtistService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -42,5 +39,20 @@ public class ArtistController {
         if (artistService.findArtistByName(artistName).size()==1) {
             return new ResponseEntity<>(artistService.findArtistByName(artistName), HttpStatus.OK);
         } else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/create/artist")
+    public ResponseEntity<Artist> create(@RequestBody Artist artist){
+        return new ResponseEntity<>(artistService.save(artist), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/artist/{id}")
+    public ResponseEntity<String> delete (@PathVariable("id") Long artistId){
+        if (artistService.findById(artistId).isPresent()){
+            artistService.deleteById(artistId);
+            return new ResponseEntity<>("Artist with id " + artistId, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Failed to delete artist " + artistId, HttpStatus.BAD_REQUEST);
+        }
     }
 }

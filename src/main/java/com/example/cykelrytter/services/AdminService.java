@@ -2,6 +2,7 @@ package com.example.cykelrytter.services;
 
 
 import com.example.cykelrytter.model.Admin;
+import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.repositories.AdminRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,6 @@ public class AdminService implements IAdminService{
 
     @Override
     public void deleteById(Long aLong) {
-
     }
 
     @Override

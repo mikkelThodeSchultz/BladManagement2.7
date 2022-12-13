@@ -1,5 +1,6 @@
 package com.example.cykelrytter.services;
 
+import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.model.Stock;
 import com.example.cykelrytter.repositories.StockRepository;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,6 @@ public class StockService implements IStockService{
 
     @Override
     public void deleteById(Long aLong) {
-
     }
 
     @Override
