@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 public class StockItemController {
     private IStockItemService stockService;
     public StockItemController(IStockItemService stockService){

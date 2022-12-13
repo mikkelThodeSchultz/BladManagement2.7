@@ -12,7 +12,7 @@ public class StockItemService implements IStockItemService {
 
     private StockItemRepository stockItemRepository;
 
-    public StockItemService(StockItemRepository stockRepository) {
+    public StockItemService(StockItemRepository stockItemRepository) {
         this.stockItemRepository = stockItemRepository;
     }
 
