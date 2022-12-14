@@ -25,8 +25,10 @@ public class ImageController {
 
     @PostMapping("/create/backstageImage")
     public ResponseEntity<Image> create (@RequestBody String imageUrl){
-        Image imageToSave = imageService.convertUrl(imageUrl);
-        return new ResponseEntity<>(imageService.save(imageToSave), HttpStatus.OK);
+        String urlToSave = imageService.convertUrl(imageUrl);
+        Image image = new Image();
+        image.setImageURL(urlToSave);
+        return new ResponseEntity<>(imageService.save(image), HttpStatus.OK);
     }
 
     @DeleteMapping ("/delete/backstageImage")

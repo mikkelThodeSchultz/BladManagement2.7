@@ -28,7 +28,7 @@ public class ImageService implements IImageService{
     }
 
     @Override
-    public Image convertUrl(String url){
+    public String convertUrl(String url){
 
         //Get first half of url
         String[] urlToArray = url.split("file");
@@ -39,12 +39,11 @@ public class ImageService implements IImageService{
 
         //Make one array - merge!
         String converted = urlToArray[0] + urlToArray[1];
-        System.out.println(converted);
 
-        Image image = new Image();
-        image.setImageURL(converted);
+        /*Image image = new Image();
+        image.setImageURL(converted);*/
 
-        return image;
+        return converted;
     }
 
 
