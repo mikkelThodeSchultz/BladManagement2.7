@@ -38,11 +38,14 @@ public class EventController {
 
     @PutMapping("/update/event")
     public ResponseEntity<Event> update(@RequestBody Event event){
+        System.out.println(event.toString());
         Event eventToUpdate = eventService.findById(event.getId()).get();
         eventToUpdate.setDate(event.getDate());
         if (!event.getImageUrl().equals(eventToUpdate.getImageUrl())) {
             String eventImageUrlToSave = imageService.convertUrl(event.getImageUrl());
             eventToUpdate.setImageUrl(eventImageUrlToSave);
+        } else {
+            eventToUpdate.setImageUrl(event.getImageUrl());
         }
         eventToUpdate.setDescription(event.getDescription());
         eventToUpdate.setFacebookLink(event.getFacebookLink());

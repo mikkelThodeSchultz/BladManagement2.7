@@ -3,6 +3,7 @@ package com.example.cykelrytter.services;
 import com.example.cykelrytter.model.Event;
 import com.example.cykelrytter.model.Image;
 import com.example.cykelrytter.repositories.EventRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
