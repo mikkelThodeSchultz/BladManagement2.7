@@ -5,6 +5,7 @@ import com.example.cykelrytter.model.Admin;
 import com.example.cykelrytter.repositories.AdminRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -23,7 +24,7 @@ public class AdminService implements IAdminService{
 
     @Override
     public Admin save(Admin object) {
-        return null;
+        return adminRepository.save(object);
     }
 
     @Override

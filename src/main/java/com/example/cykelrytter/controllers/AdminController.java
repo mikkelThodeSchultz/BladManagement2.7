@@ -3,7 +3,6 @@ package com.example.cykelrytter.controllers;
 import com.example.cykelrytter.model.Admin;
 import com.example.cykelrytter.model.NewsList;
 import com.example.cykelrytter.services.IAdminService;
-import com.example.cykelrytter.services.IArtistService;
 import com.example.cykelrytter.services.INewsListService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +20,20 @@ public class AdminController {
     public AdminController(IAdminService adminService, INewsListService newsListService) {
         this.adminService = adminService;
         this.newsListService = newsListService;
+    }
+
+    @GetMapping("/get/adminInfo")
+    public ResponseEntity<Admin> getInfo(){
+        return new ResponseEntity<>(adminService.findById((long)1).get(), HttpStatus.OK);
+    }
+
+    @PutMapping("/update/adminInfo")
+    public ResponseEntity<Admin> updateInfo(@RequestBody Admin admin){
+        Admin adminToUpdate = adminService.findById((long)1).get();
+        if (!admin.getPassword().equals(adminToUpdate.getPassword())){
+            adminToUpdate.setPassword(admin.getPassword());
+        }
+        return new ResponseEntity<>(adminService.save(adminToUpdate), HttpStatus.OK);
     }
 
     @GetMapping("/get/allEmails")
