@@ -36,6 +36,19 @@ public class EventController {
         return new ResponseEntity<>(eventService.save(event), HttpStatus.OK);
     }
 
+    @PutMapping("/update/event")
+    public ResponseEntity<Event> update(@RequestBody Event event){
+        Event eventToUpdate = eventService.findById(event.getId()).get();
+        eventToUpdate.setDate(event.getDate());
+        if (!event.getImageUrl().equals(eventToUpdate.getImageUrl())) {
+            String eventImageUrlToSave = imageService.convertUrl(event.getImageUrl());
+            eventToUpdate.setImageUrl(eventImageUrlToSave);
+        }
+        eventToUpdate.setDescription(event.getDescription());
+        eventToUpdate.setFacebookLink(event.getFacebookLink());
+        return new ResponseEntity<>(eventService.save(eventToUpdate), HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete/event/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Long eventId){
         if (eventService.findById(eventId).isPresent()){
