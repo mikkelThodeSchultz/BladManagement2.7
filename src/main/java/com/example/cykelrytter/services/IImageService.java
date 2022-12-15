@@ -5,7 +5,7 @@ import com.example.cykelrytter.model.Image;
 
 public interface IImageService extends ICrudService<Image,Long> {
 
-    Image convertUrl(String url);
+    String convertUrl(String url);
 
     //String saveUrl(String url);
 

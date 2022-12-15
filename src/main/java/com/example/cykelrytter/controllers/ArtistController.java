@@ -3,12 +3,10 @@ package com.example.cykelrytter.controllers;
 import com.example.cykelrytter.model.Artist;
 import com.example.cykelrytter.services.ArtistService;
 import com.example.cykelrytter.services.IArtistService;
+import com.example.cykelrytter.services.IImageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -19,8 +17,11 @@ import java.util.Set;
 public class ArtistController {
 
     private IArtistService artistService;
-    public ArtistController(IArtistService artistService){
+    private IImageService imageService;
+
+    public ArtistController(IArtistService artistService, IImageService imageService) {
         this.artistService = artistService;
+        this.imageService = imageService;
     }
 
     @GetMapping("/get/artistList")
@@ -42,5 +43,41 @@ public class ArtistController {
         if (artistService.findArtistByName(artistName).size()==1) {
             return new ResponseEntity<>(artistService.findArtistByName(artistName), HttpStatus.OK);
         } else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/create/artist")
+    public ResponseEntity<Artist> create(@RequestBody Artist artist){
+        return new ResponseEntity<>(artistService.save(artist), HttpStatus.OK);
+    }
+
+    @PutMapping("/update/artist")
+    public ResponseEntity<Artist> update(@RequestBody Artist artist){
+        System.out.println(artist.toString());
+        Artist artistToUpdate = artistService.findById(artist.getId()).get();
+        if (!artist.getImageLink().equals(artistToUpdate.getImageLink())) {
+            String artistImageUrlToSave = imageService.convertUrl(artist.getImageLink());
+            artistToUpdate.setImageLink(artistImageUrlToSave);
+        } else {
+            artistToUpdate.setImageLink(artist.getImageLink());
+        }
+        artistToUpdate.setDescription(artist.getDescription());
+        artistToUpdate.setAgent(artist.getAgent());
+        artistToUpdate.setYoutubeLink(artist.getYoutubeLink());
+        artistToUpdate.setFacebookLink(artist.getFacebookLink());
+        artistToUpdate.setInstagramLink(artist.getInstagramLink());
+        artistToUpdate.setSpotifyLink(artist.getSpotifyLink());
+        artistToUpdate.setTikTokLink(artist.getTikTokLink());
+        return new ResponseEntity<>(artistService.save(artistToUpdate), HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/delete/artist/{id}")
+    public ResponseEntity<String> delete (@PathVariable("id") Long artistId){
+        if (artistService.findById(artistId).isPresent()){
+            artistService.deleteById(artistId);
+            return new ResponseEntity<>("Artist with id " + artistId, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Failed to delete artist " + artistId, HttpStatus.BAD_REQUEST);
+        }
     }
 }

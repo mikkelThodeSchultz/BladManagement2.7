@@ -29,9 +29,9 @@ class ImageServiceTest {
         String url1 = "https://drive.google.com/file/d/1Mqbvd0lFpsM4V83lO9u1aCE9KRP2CPdx/view?usp=share_link"; //Should fail
         String url2 = "https://drive.google.com/uc?export=view&id=1Mqbvd0lFpsM4V83lO9u1aCE9KRP2CPdx"; //Should pass
         //ACT
-        Image withParsedUrl1 = imageService.convertUrl(url1);
+        String withParsedUrl1 = imageService.convertUrl(url1);
         //ASSERT
         Assertions.assertNotNull(withParsedUrl1);
-        Assertions.assertEquals(url2,withParsedUrl1.getImageURL());
+        Assertions.assertEquals(url2,withParsedUrl1);
     }
 }
