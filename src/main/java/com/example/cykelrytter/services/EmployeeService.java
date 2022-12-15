@@ -35,11 +35,11 @@ public class EmployeeService implements IEmployeeService{
 
     @Override
     public void deleteById(Long aLong) {
-
+        employeeRepository.deleteById(aLong);
     }
 
     @Override
     public Optional<Employee> findById(Long aLong) {
-        return Optional.empty();
+        return employeeRepository.findById(aLong);
     }
 }
