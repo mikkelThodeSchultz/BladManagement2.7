@@ -47,6 +47,9 @@ public class ArtistController {
 
     @PostMapping("/create/artist")
     public ResponseEntity<Artist> create(@RequestBody Artist artist){
+        String artistUrl = artist.getImageLink();
+        String urlToSave = imageService.convertUrl(artistUrl);
+        artist.setImageLink(urlToSave);
         return new ResponseEntity<>(artistService.save(artist), HttpStatus.OK);
     }
 
