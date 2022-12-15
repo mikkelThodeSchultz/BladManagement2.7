@@ -1,6 +1,7 @@
 package com.example.cykelrytter.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,5 +19,8 @@ public class OrderLine {
     @OneToOne
     private Product item;
     private int orderAmount;
+    @ManyToOne
+    @JsonBackReference
+    private Order order;
 
 }

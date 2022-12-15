@@ -1,6 +1,7 @@
 package com.example.cykelrytter.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +21,7 @@ public class Order {
     private Long id;
     @OneToMany
     private List<OrderLine> orderlines;
-    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    @Column
     private Date orderDate;
 
 }

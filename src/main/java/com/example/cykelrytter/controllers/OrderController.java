@@ -12,6 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 public class OrderController {
     private IOrderService orderService;
     public OrderController(IOrderService orderService){
@@ -21,6 +22,11 @@ public class OrderController {
     @GetMapping("/get/orderList")
     public ResponseEntity<Set<Order>> getOrder(){
         return new ResponseEntity<>(orderService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/get/lastOrder")
+    public ResponseEntity<Long> getLastOrder(){
+        return new ResponseEntity<>(orderService.findLastOrder(), HttpStatus.OK);
     }
 
     @GetMapping ("/get/order")

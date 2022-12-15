@@ -5,9 +5,8 @@ import com.example.cykelrytter.model.Product;
 import com.example.cykelrytter.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+
 @Service
 public class OrderService implements IOrderService{
 
@@ -40,5 +39,12 @@ public class OrderService implements IOrderService{
     @Override
     public Optional<Order> findById(Long aLong) {
         return orderRepository.findById(aLong);
+    }
+
+    @Override
+    public Long findLastOrder() {
+        ArrayList<Order> orderSet = new ArrayList<>(orderRepository.findAll());
+        orderSet.sort(Comparator.comparing(Order :: getId).reversed());
+        return orderSet.get(0).getId();
     }
 }

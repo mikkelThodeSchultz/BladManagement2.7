@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 public class ProductController {
     private IProductService productService;
     public ProductController(IProductService productService){
